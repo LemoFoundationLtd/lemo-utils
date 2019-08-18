@@ -9,35 +9,19 @@ import {
     generateAccount,
 } from '../../lib/utils/address'
 import errors from '../../lib/errors'
+import {moToLemo} from '../../lib/utils/amount'
 
 const testAddr = 'Lemo836BQKCBZ8Z7B7N4G4N4SNGBT24ZZSJQD24D'
 
 describe('address_verifyAddress', () => {
-    const tests = [
-        {input: 'Lemo', output: 'Invalid address checksum Lemo'},
-        {input: 'Lemo8', output: 'Invalid address checksum Lemo8'},
-        {input: 'LemoBW', output: ''},
-        {input: 'Lemo83GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG', output: ''},
-        {input: 'lemo83gn72gyh2nz8ba729z9tct7kq5fc3cr6djg', output: ''},
-        {
-            input: 'Lemo03GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG',
-            output: 'Decode address LEMO03GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG fail: Non-base26 character',
-        },
-        {input: 'Lemo33GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG', output: 'Invalid address checksum Lemo33GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG'},
-        {input: '123', output: 'Invalid LemoChain address 123'},
-        {input: '0x', output: ''},
-        {input: '0x1', output: ''},
-        {input: '0x015780f8456f9c1532645087a19dcf9a7e0c7f97', output: ''},
-        {input: '0X015780F8456F9C1532645087A19DCF9A7E0C7F97', output: ''},
-        {input: '0x015780f8456f9c1532645087a19dcf9a7e0c7f97111', output: 'Invalid hex address 0x015780f8456f9c1532645087a19dcf9a7e0c7f97111'},
-        {input: 0x1, output: 'Invalid type of address 1, expected \'string\' rather than \'number\''},
-    ]
-
-    tests.forEach(({input, output}, i) => {
-        it(`address ${JSON.stringify(input)}`, () => {
-            const errMsg = verifyAddress(input)
-            return assert.equal(errMsg, output, `index=${i}`)
-        })
+    it('valid address', () => {
+        const errMsg = verifyAddress(testAddr)
+        return assert.equal(errMsg, '')
+    })
+    it('invalid address', () => {
+        assert.throws(() => {
+            verifyAddress('0x1')
+        }, errors.InvalidAddress('0x1'))
     })
 })
 
@@ -100,6 +84,38 @@ describe('address_isContractAddress', () => {
     it('address_isContractAddress_true', () => {
         const result = isContractAddress('Lemo84PBJRWCJJ96KPN7PJ7FJZQK8743W7NK5TAD')
         assert.equal(result, true)
+    })
+})
+
+describe('address_decodeAddress', () => {
+    const tests = [
+        {input: 'Lemo', error: errors.InvalidAddressCheckSum('Lemo')},
+        {input: 'Lemo8', error: errors.InvalidAddressCheckSum('Lemo8')},
+        {input: 'LemoBW', output: '0x01'},
+        {input: 'Lemo83GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG', output: '0x015780f8456f9c1532645087a19dcf9a7e0c7f97'},
+        {input: 'lemo83gn72gyh2nz8ba729z9tct7kq5fc3cr6djg', output: '0x015780f8456f9c1532645087a19dcf9a7e0c7f97'},
+        {
+            input: 'Lemo03GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG',
+            error: 'Decode address LEMO03GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG fail: Non-base26 character',
+        },
+        {input: 'Lemo33GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG', error: errors.InvalidAddressCheckSum('Lemo33GN72GYH2NZ8BA729Z9TCT7KQ5FC3CR6DJG')},
+        {input: '123', error: errors.InvalidAddress('123')},
+        {input: '0x', output: '0x'},
+        {input: '0x1', output: '0x1'},
+        {input: '0x015780f8456f9c1532645087a19dcf9a7e0c7f97', output: '0x015780f8456f9c1532645087a19dcf9a7e0c7f97'},
+        {input: 0x1, error: errors.InvalidAddressType(0x1)},
+    ]
+
+    tests.forEach((test) => {
+        it(`address ${JSON.stringify(test.input)}`, () => {
+            if (test.error) {
+                assert.throws(() => {
+                    decodeAddress(test.input)
+                }, test.error)
+            } else {
+                assert.equal(decodeAddress(test.input), test.output)
+            }
+        })
     })
 })
 
