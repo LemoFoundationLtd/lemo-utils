@@ -13,16 +13,13 @@ A collection of utility functions for Lemochain
 - generateAccount
 
 #### amount
-- formatAmount
+- formatLEMO
 - lemoToMo
 - moToLemo
 
 #### buffer
-- formatBuffer
 - toBuffer
-- hexStringToBuffer
 - bufferTrimLeft
-- bufferPadLeft
 - setBufferLength
 
 #### crypto
@@ -37,6 +34,5 @@ A collection of utility functions for Lemochain
 - toHexStr
 
 #### rlp
-- encode
-- decode
-- getLength
+- rlpEncode
+- rlpDecode

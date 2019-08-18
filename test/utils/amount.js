@@ -1,9 +1,9 @@
 import {assert} from 'chai'
 import BigNumber from 'bignumber.js'
-import {formatAmount, moToLemo, lemoToMo} from '../../lib/utils/amount'
+import {formatLEMO, moToLemo, lemoToMo} from '../../lib/utils/amount'
 import errors from '../../lib/errors'
 
-describe('amount_formatAmount', () => {
+describe('amount_formatLEMO', () => {
     const tests = {
         0: '0 LEMO',
         1: '1 mo',
@@ -26,17 +26,17 @@ describe('amount_formatAmount', () => {
     }
     Object.entries(tests).forEach(([input, output]) => {
         it(`number ${input}`, () => {
-            assert.equal(formatAmount(input), output)
+            assert.equal(formatLEMO(input), output)
         })
     })
     Object.entries(tests).forEach(([input, output]) => {
         it(`string ${input}`, () => {
-            assert.equal(formatAmount(`${input}`), output)
+            assert.equal(formatLEMO(`${input}`), output)
         })
     })
     Object.entries(tests).forEach(([input, output]) => {
         it(`BigNumber ${input}`, () => {
-            assert.equal(formatAmount(new BigNumber(input)), output)
+            assert.equal(formatLEMO(new BigNumber(input)), output)
         })
     })
 })
