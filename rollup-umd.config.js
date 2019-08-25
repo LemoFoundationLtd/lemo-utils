@@ -28,7 +28,6 @@ function umdConfig(name) {
             }),
             // use resolve so Rollup can find external libraries
             // set browser to true so we could load the 'browser' field of libraries' package.json
-            // set preferBuiltins to false cause we had rollup-plugin-node-builtins already
             resolve({browser: true, preferBuiltins: true}),
             // use commonjs so Rollup can convert external libraries to an ES module
             commonjs(),
@@ -38,9 +37,6 @@ function umdConfig(name) {
             json(),
             globals({process: false, dirname: false, filename: false}),
             builtins(),
-            visualizer({
-                filename: 'file_size_visualizer.html',
-            }),
         ],
     }
 }
@@ -48,6 +44,7 @@ function umdConfig(name) {
 const umdVersion = umdConfig('lemo-utils.js')
 // eslint should before babel
 umdVersion.plugins.unshift(eslint({formatter}))
+umdVersion.plugins.shift(visualizer({filename: 'file_size_visualizer.html'}))
 
 const umdMinVersion = umdConfig('lemo-utils.min.js')
 umdMinVersion.plugins.push(uglify())
