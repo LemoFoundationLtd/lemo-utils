@@ -8,6 +8,7 @@
     "dependencies": {
         "base-x": "3.0.6",
         "bignumber.js": "9.0.0",
+        "core-js": "3.2.1",
         "elliptic": "6.5.0",
         "keccak": "2.0.0",
         "safe-buffer": "5.2.0"
@@ -15,10 +16,8 @@
     "devDependencies": {
         "@babel/core": "7.5.5",
         "@babel/preset-env": "7.5.5",
-        "@babel/register": "7.5.5",
         "babel-eslint": "11.0.0-beta.0",
         "chai": "4.2.0",
-        "core-js": "3.2.1",
         "coveralls": "3.0.6",
         "eslint": "6.2.2",
         "eslint-config-airbnb-base": "14.0.0",
