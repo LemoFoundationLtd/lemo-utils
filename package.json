@@ -4,7 +4,8 @@
     "version": "1.1.2",
     "description": "A collection of utility functions for Lemochain",
     "main": "dist/lemo-utils.cjs.js",
-    "module": "dist/lemo-utils-browser.esm.js",
+    "module": "dist/lemo-utils.esm.js",
+    "browser": "dist/lemo-utils.js",
     "dependencies": {
         "base-x": "3.0.6",
         "bignumber.js": "9.0.0",

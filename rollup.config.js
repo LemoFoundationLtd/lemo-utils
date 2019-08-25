@@ -9,18 +9,10 @@ export default [
         output: [
             // set exports to named cause we need export multiple properties in index.js
             {file: pkg.main, format: 'cjs', exports: 'named'}, // CommonJS (for Node) build
-        ],
-        plugins: [replace({'process.env.SDK_VERSION': JSON.stringify(pkg.version)})],
-    },
-    {
-        input: 'lib/index.js',
-        external: ['bignumber.js', 'safe-buffer', 'elliptic', 'keccak', 'base-x'],
-        output: [
             {file: pkg.module, format: 'esm'}, // ES module (for Rollup and webpack) build
         ],
         plugins: [
             replace({
-                'process.browser': 'true',
                 'process.env.SDK_VERSION': JSON.stringify(pkg.version),
             }),
             babel({
