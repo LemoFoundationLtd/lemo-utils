@@ -7,7 +7,7 @@ export default [
         input: 'lib/index.js',
         external: ['bignumber.js', 'safe-buffer', 'elliptic', 'keccak', 'base-x'],
         output: [
-            {file: pkg.main, format: 'cjs'}, // CommonJS (for Node) build
+            {file: pkg.main, format: 'cjs', exports: 'named'}, // CommonJS (for Node) build
         ],
         plugins: [replace({'process.env.SDK_VERSION': JSON.stringify(pkg.version)})],
     },
@@ -15,7 +15,7 @@ export default [
         input: 'lib/index.js',
         external: ['bignumber.js', 'safe-buffer', 'elliptic', 'keccak', 'base-x'],
         output: [
-            {file: pkg.browser, format: 'cjs'}, // CommonJS (for Node) build
+            {file: pkg.module, format: 'esm'}, // ES module (for Rollup and webpack) build
         ],
         plugins: [
             replace({
