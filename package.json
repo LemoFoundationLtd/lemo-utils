@@ -1,7 +1,7 @@
 {
     "name": "lemo-utils",
     "namespace": "LemoFoundationLtd",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "A collection of utility functions for Lemochain",
     "main": "dist/lemo-utils.cjs.js",
     "module": "dist/lemo-utils-browser.esm.js",
