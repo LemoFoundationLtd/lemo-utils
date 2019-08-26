@@ -9,7 +9,7 @@
     "dependencies": {
         "base-x": "3.0.6",
         "bignumber.js": "9.0.0",
-        "core-js": "3.2.1",
+        "core-js": "^3.2.1",
         "elliptic": "6.5.0",
         "keccak": "2.0.0",
         "safe-buffer": "5.2.0"
