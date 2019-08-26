@@ -33,6 +33,8 @@ function umdConfig(name) {
             // use commonjs so Rollup can convert external libraries to an ES module
             commonjs(),
             babel({
+                // transform es6 code. This needs @babel/plugin-transform-runtime and @babel/runtime
+                runtimeHelpers: true,
                 exclude: 'node_modules/**',
             }),
             json(),

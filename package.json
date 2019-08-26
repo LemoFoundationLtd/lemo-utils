@@ -1,12 +1,13 @@
 {
     "name": "lemo-utils",
     "namespace": "LemoFoundationLtd",
-    "version": "1.1.2",
+    "version": "1.1.4",
     "description": "A collection of utility functions for Lemochain",
     "main": "dist/lemo-utils.cjs.js",
     "module": "dist/lemo-utils.esm.js",
     "browser": "dist/lemo-utils.js",
     "dependencies": {
+        "@babel/runtime": "7.5.5",
         "base-x": "3.0.6",
         "bignumber.js": "9.0.0",
         "core-js": "^3.2.1",
@@ -16,6 +17,7 @@
     },
     "devDependencies": {
         "@babel/core": "7.5.5",
+        "@babel/plugin-transform-runtime": "7.5.5",
         "@babel/preset-env": "7.5.5",
         "babel-eslint": "11.0.0-beta.0",
         "chai": "4.2.0",
