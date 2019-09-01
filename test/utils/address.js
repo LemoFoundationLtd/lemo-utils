@@ -9,7 +9,6 @@ import {
     generateAccount,
 } from '../../lib/utils/address'
 import errors from '../../lib/errors'
-import {moToLemo} from '../../lib/utils/amount'
 
 const testAddr = 'Lemo836BQKCBZ8Z7B7N4G4N4SNGBT24ZZSJQD24D'
 
