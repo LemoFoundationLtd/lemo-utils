@@ -63,7 +63,7 @@ pubKeyToAddress(pubKey)
 0. `string` - 公钥
 
 ##### Returns
-`string` - 生成的十六进制地址
+`string` - 生成Lemo地址
 
 ---
 
@@ -73,13 +73,13 @@ pubKeyToAddress(pubKey)
 ```
 privateKeyToAddress(privKey)
 ```
-通过私钥生成地址，通过私钥得到公钥，然后用pubKeyToAddress方法得到账户
+通过私钥得到公钥，然后用公钥生成地址
 
 ##### Parameters
 0. `string` - 私钥
 
 ##### Returns
-`string` - 生成的十六进制地址
+`string` - 生成Lemo地址
 
 ---
 
@@ -176,7 +176,7 @@ encodeAddress(data)
 0. `string|Buffer` - 需要转换的十六进制地址
 
 ##### Returns
-`string` - 带有`Lemo`开头的地址
+`string` - 以`Lemo`开头的地址
 
 ---
 
@@ -208,7 +208,9 @@ generateAccount()
 无
 
 ##### Returns
-`object` - 带有账户和私钥的地址
+`object` - 带有账户和私钥的地址，包括：
+    - `privKey` 私钥
+    - `address` 以`Lemo`开头的地址
 
 ### amount
 
@@ -223,10 +225,10 @@ formatLEMO(mo)
 规范LEMO的单位
 
 ##### Parameters
-0. `string` - 个数，单位为`mo`
+0. `string` - 个数
 
 ##### Returns
-`string` - 返回计算之后的`mo`的个数
+`string` - 返回计算之后的结果
 
 ---
 
@@ -239,7 +241,7 @@ moToLemo(mo)
 将单位从mo转换为LEMO的个数
 
 ##### Parameters
-0. `number|string` - 个数，单位为`mo`
+0. `number|string` - mo的个数
 
 ##### Returns
 `BigNumber` - 转换为`LEMO`的个数
@@ -258,7 +260,7 @@ lemoToMo(ether)
 0. `string` - 个数，单位为`LEMO`
 
 ##### Returns
-`BigNumber` - 转换成单位为`mo`的个数
+`BigNumber` - 转换成`mo`的个数
 
 
 ### buffer
@@ -303,13 +305,13 @@ hexStringToBuffer(hex)
 ```
 bufferTrimLeft(buffer)
 ```
-整理buffer类型的二进制字节流
+删去buffer类型的二进制字节流左边连续的0
 
 ##### Parameters
 0. `string` - 需要转换的十六进制字符串
 
 ##### Returns
-`buffer` - 就散后的buffer类型的数据
+`buffer` - 整理后的buffer类型的数据
 
 ---
 
@@ -319,15 +321,15 @@ bufferTrimLeft(buffer)
 ```
 setBufferLength(buffer, length, right)
 ```
-获取buffer的长度
+将buffer设置为固定的长度
 
 ##### Parameters
-0. `string` - buffer类型的数据
+0. `buffer` - buffer类型的数据
 1. `string` - 长度
-2. `string` - 需要转换的十六进制字符串
+2. `boolean` - 如果传入的buffer长度不足，是否从右边补0
 
 ##### Returns
-`buffer` - 就散后的buffer类型的数据
+`buffer` - 整理后的buffer类型的数据
 
 ### crypto
 
@@ -373,7 +375,7 @@ recover(hash, sig)
 ```
 function sha3(data)
 ```
-加密算法
+hash算法
 
 ##### Parameters
 0. `buffer` - buffer数据
@@ -423,7 +425,7 @@ has0xPrefix(str)
 ```
 decodeUtf8Hex(hex)
 ```
-将一个十六进制字符串解析得到数据
+将一个十六进制字符串以utf格式进行解码
 
 ##### Parameters
 0. `string` - 十六进制字符串
