@@ -225,7 +225,7 @@ formatLEMO(mo)
 规范LEMO的单位
 
 ##### Parameters
-0. `string` - 个数
+0. `string` - 金额，单位`mo`
 
 ##### Returns
 `string` - 返回计算之后的结果
@@ -241,7 +241,7 @@ moToLemo(mo)
 将单位从mo转换为LEMO的金额
 
 ##### Parameters
-0. `number|string` - mo的金额
+0. `number|string` - 金额，单位为`mo`
 
 ##### Returns
 `BigNumber` - 返回计算之后的金额
