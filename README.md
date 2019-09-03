@@ -238,13 +238,13 @@ formatLEMO(mo)
 ```
 moToLemo(mo)
 ```
-将单位从mo转换为LEMO的个数
+将单位从mo转换为LEMO的金额
 
 ##### Parameters
-0. `number|string` - mo的个数
+0. `number|string` - mo的金额
 
 ##### Returns
-`BigNumber` - 转换为`LEMO`的个数
+`BigNumber` - 返回计算之后的金额
 
 ---
 
@@ -254,13 +254,13 @@ moToLemo(mo)
 ```
 lemoToMo(ether)
 ```
-将单位从LEMO的个数转换为mo
+将单位从LEMO的金额转换为mo
 
 ##### Parameters
-0. `string` - 个数，单位为`LEMO`
+0. `string` - 金额，单位为`LEMO`
 
 ##### Returns
-`BigNumber` - 转换成`mo`的个数
+`BigNumber` - 返回计算之后的金额
 
 
 ### buffer
@@ -276,10 +276,10 @@ toBuffer(v)
 将不同数据类型的数据转换成Buffer类型的二进制字节流
 
 ##### Parameters
-0. `string|array|object|number|bigNumber|buffer` - 需要转换的数据
+0. `string|Array|object|number|bigNumber|Buffer` - 需要转换的数据
 
 ##### Returns
-`buffer` - 得到的buffer类型的数据
+`Buffer` - 得到的buffer类型的数据
 
 ---
 
@@ -295,7 +295,7 @@ hexStringToBuffer(hex)
 0. `string` - 需要转换的十六进制字符串
 
 ##### Returns
-`buffer` - 得到的buffer类型的数据
+`Buffer` - 得到的buffer类型的数据
 
 ---
 
@@ -311,7 +311,7 @@ bufferTrimLeft(buffer)
 0. `string` - 需要转换的十六进制字符串
 
 ##### Returns
-`buffer` - 整理后的buffer类型的数据
+`Buffer` - 整理后的buffer类型的数据
 
 ---
 
@@ -324,12 +324,12 @@ setBufferLength(buffer, length, right)
 将buffer设置为固定的长度
 
 ##### Parameters
-0. `buffer` - buffer类型的数据
+0. `Buffer` - buffer类型的数据
 1. `string` - 长度
 2. `boolean` - 如果传入的buffer长度不足，是否从右边补0
 
 ##### Returns
-`buffer` - 整理后的buffer类型的数据
+`Buffer` - 整理后的buffer类型的数据
 
 ### crypto
 
@@ -348,7 +348,7 @@ sign(privateKey, hash)
 1. `string` - 对交易计算得到的hash值
 
 ##### Returns
-`buffer` - 得到的buffer类型的数据
+`Buffer` - 得到的buffer类型的数据
 
 ---
 
@@ -365,7 +365,7 @@ recover(hash, sig)
 1. `string` - 对交易计算得到的hash值
 
 ##### Returns
-`buffer|null` - 如果成功得到的buffer类型的公钥，反之为null
+`Buffer|null` - 如果成功得到的buffer类型的公钥，反之为null
 
 ---
 
@@ -378,10 +378,10 @@ function sha3(data)
 hash算法
 
 ##### Parameters
-0. `buffer` - buffer数据
+0. `Buffer` - buffer数据
 
 ##### Returns
-`buffer` - 加密之后的buffer
+`Buffer` - 加密之后的buffer
 
 ---
 
@@ -397,7 +397,7 @@ privateToPublicKey(privKey)
 0. `string` - 私钥的buffer值
 
 ##### Returns
-`buffer` - 得到的公钥的buffer值
+`Buffer` - 得到的公钥的buffer值
 
 ### hex
 
