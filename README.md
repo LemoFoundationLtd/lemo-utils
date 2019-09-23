@@ -27,6 +27,7 @@ A collection of utility functions for Lemochain
 
 #### buffer
 - [toBuffer](#toBuffer)
+- [isBuffer](#isBuffer)
 - [bufferTrimLeft](#bufferTrimLeft)
 - [setBufferLength](#setBufferLength)
 
@@ -279,7 +280,23 @@ toBuffer(v)
 0. `string|Array|object|number|bigNumber|Buffer` - 需要转换的数据
 
 ##### Returns
-`Buffer` - 得到的buffer类型的数据
+`Buffer` - 得到的Buffer类型的数据
+
+---
+
+<a name="isBuffer"></a>
+
+#### isBuffer
+```
+isBuffer(v)
+```
+检测传入的值是否是Buffer类型
+
+##### Parameters
+0. `*` - 需要检测的数据
+
+##### Returns
+`bool` - 是否是Buffer类型的数据
 
 ---
 
@@ -289,13 +306,13 @@ toBuffer(v)
 ```
 hexStringToBuffer(hex)
 ```
-将十六进制的字符串转换成buffer类型的二进制字节流
+将十六进制的字符串转换成Buffer类型的二进制字节流
 
 ##### Parameters
 0. `string` - 需要转换的十六进制字符串
 
 ##### Returns
-`Buffer` - 得到的buffer类型的数据
+`Buffer` - 得到的Buffer类型的数据
 
 ---
 
@@ -305,13 +322,13 @@ hexStringToBuffer(hex)
 ```
 bufferTrimLeft(buffer)
 ```
-删去buffer类型的二进制字节流左边连续的0
+删去Buffer类型的二进制字节流左边连续的0
 
 ##### Parameters
 0. `string` - 需要转换的十六进制字符串
 
 ##### Returns
-`Buffer` - 整理后的buffer类型的数据
+`Buffer` - 整理后的Buffer类型的数据
 
 ---
 
@@ -324,12 +341,12 @@ setBufferLength(buffer, length, right)
 将buffer设置为固定的长度
 
 ##### Parameters
-0. `Buffer` - buffer类型的数据
+0. `Buffer` - Buffer类型的数据
 1. `string` - 长度
 2. `boolean` - 如果传入的buffer长度不足，是否从右边补0
 
 ##### Returns
-`Buffer` - 整理后的buffer类型的数据
+`Buffer` - 整理后的Buffer类型的数据
 
 ### crypto
 
@@ -348,7 +365,7 @@ sign(privateKey, hash)
 1. `string` - 对交易计算得到的hash值
 
 ##### Returns
-`Buffer` - 得到的buffer类型的数据
+`Buffer` - 得到的Buffer类型的数据
 
 ---
 
@@ -365,7 +382,7 @@ recover(hash, sig)
 1. `string` - 对交易计算得到的hash值
 
 ##### Returns
-`Buffer|null` - 如果成功得到的buffer类型的公钥，反之为null
+`Buffer|null` - 如果成功得到的Buffer类型的公钥，反之为null
 
 ---
 
