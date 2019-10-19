@@ -25,6 +25,30 @@
                         assert.exists(account.address)
                     })
                 })
+
+                function randomBytes(size) {
+                    const numArr = new Array(size).fill(0).map(() => Math.floor(Math.random() * 256))
+                    return LemoUtils.toBuffer(numArr)
+                }
+
+                describe('base64_base64Encode_base64Decode', () => {
+                    for (let i = 0; i < 20; i++) {
+                        it(`random utf8 case ${i}`, () => {
+                            const test = randomBytes(20)
+                            const testUtf8 = test.toString()
+                            const encoded = LemoUtils.base64Encode(testUtf8, true)
+                            assert.equal(LemoUtils.base64Decode(encoded), testUtf8, `case ${i}, hex of test=${test.toString('hex')}`)
+                        })
+                    }
+
+                    for (let i = 0; i < 20; i++) {
+                        it(`random hex case ${i}`, () => {
+                            const test = randomBytes(20).toString('hex')
+                            const encoded = LemoUtils.base64Encode(test, true, true)
+                            assert.equal(LemoUtils.base64Decode(encoded, true), test, `case ${i}, test=${test}`)
+                        })
+                    }
+                })
             })()
         </script>
         <script>

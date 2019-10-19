@@ -48,6 +48,10 @@ A collection of utility functions for Lemochain
 - [rlpEncode](#rlpEncode)
 - [rlpDecode](#rlpDecode)
 
+#### base64
+- [base64Encode](#base64Encode)
+- [base64Decode](#base64Decode)
+
 ### address
 
 ---
@@ -477,13 +481,13 @@ toHexStr(data)
 ```
 rlpEncode(input)
 ```
-对rlp加密
+使用rlp算法进行编码
 
 ##### Parameters
-0. `string|buffer|array|Integer` - 需要加密的数据
+0. `string|buffer|array|number` - 需要编码的数据
 
 ##### Returns
-`buffer` - 返回buffer数据
+`buffer` - 编码后的Buffer数据对象
 
 ---
 
@@ -493,14 +497,14 @@ rlpEncode(input)
 ```
 rlpDecode(input, stream)
 ```
-对rlp解密
+使用rlp算法进行解码
 
 ##### Parameters
-0. `string` - 十六进制字符串
-1. `stream` - 流
+0. `string|buffer|array|number` - 需要解码的数据
+1. `stream` - `input`是否是一个流，这种情况下`input`末尾会存在一些无法解析的数据
 
 ##### Returns
-`array` - 解析出的数据
+`array` - 解码出的数据
 
 ---
 
@@ -512,3 +516,46 @@ getLength(input)
 ```
 获取长度，输入需要获取长度的数据，然后返回此数据的长度
 
+
+
+---
+
+
+### base64
+
+---
+
+<a name="base64Encode"></a>
+
+#### base64Encode
+```
+base64Encode(input, uriSafe, isHex)
+```
+使用base64算法进行编码
+
+##### Parameters
+0. `string` - 需要编码的字符串
+1. `uriSafe` - 是否需要编码为uri安全的字符串
+2. `isHex` - `input`是否是一个十六进制字符串
+
+##### Returns
+`string` - 编码后的字符串
+
+---
+
+<a name="base64Decode"></a>
+
+#### base64Decode
+```
+base64Decode(input, isHex)
+```
+使用base64算法进行解码
+
+##### Parameters
+0. `string` - 需要解码的字符串
+2. `isHex` - 解码后是否是一个十六进制字符串
+
+##### Returns
+`string` - 解码后的字符串
+
+---
