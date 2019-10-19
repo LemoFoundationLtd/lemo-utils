@@ -10,6 +10,7 @@ describe('buffer_toBuffer', () => {
         {input: '1', output: '31'},
         {input: '\'😋"}', output: '27f09f988b227d'},
         {input: '{"a":1}', output: '7b2261223a317d'},
+        {input: '0xabc', output: '0abc'},
         {input: '0x10011', output: '010011'},
         {input: 0, output: '00'},
         {input: 0.1, output: ''},
