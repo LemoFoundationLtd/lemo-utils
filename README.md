@@ -65,7 +65,7 @@ pubKeyToAddress(pubKey)
 公钥生成地址
 
 ##### Parameters
-0. `string` - 公钥
+0. `Buffer` - Buffer类型的公钥
 
 ##### Returns
 `string` - 生成Lemo地址
@@ -81,7 +81,7 @@ privateKeyToAddress(privKey)
 通过私钥得到公钥，然后用公钥生成地址
 
 ##### Parameters
-0. `string` - 私钥
+0. `string|Buffer` - 私钥
 
 ##### Returns
 `string` - 生成Lemo地址
@@ -268,7 +268,7 @@ lemoToMo(ether)
 `BigNumber` - 返回计算之后的金额
 
 
-### buffer
+### Buffer
 
 ---
 
@@ -329,7 +329,7 @@ bufferTrimLeft(buffer)
 删去Buffer类型的二进制字节流左边连续的0
 
 ##### Parameters
-0. `string` - 需要转换的十六进制字符串
+0. `Buffer` - 需要转换的数据
 
 ##### Returns
 `Buffer` - 整理后的Buffer类型的数据
@@ -365,11 +365,11 @@ sign(privateKey, hash)
 对hash进行签名
 
 ##### Parameters
-0. `string` - 私钥
-1. `string` - 对交易计算得到的hash值
+0. `Buffer` - Buffer类型的私钥数据
+1. `Buffer` - Buffer类型的交易hash值
 
 ##### Returns
-`Buffer` - 得到的Buffer类型的数据
+`Buffer` - Buffer类型的签名值
 
 ---
 
@@ -379,20 +379,20 @@ sign(privateKey, hash)
 ```
 recover(hash, sig)
 ```
-通过hash和签名回复公钥
+通过hash和签名恢复公钥
 
 ##### Parameters
-0. `string` - 私钥
-1. `string` - 对交易计算得到的hash值
+0. `Buffer` - Buffer类型的私钥数据
+1. `Buffer` - Buffer类型的交易hash值
 
 ##### Returns
 `Buffer|null` - 如果成功得到的Buffer类型的公钥，反之为null
 
 ---
 
-<a name="recover"></a>
+<a name="sha3"></a>
 
-#### recover
+#### sha3
 ```
 function sha3(data)
 ```
@@ -415,7 +415,7 @@ privateToPublicKey(privKey)
 通过私钥得到公钥
 
 ##### Parameters
-0. `string` - 私钥的buffer值
+0. `string|Buffer` - 私钥
 
 ##### Returns
 `Buffer` - 得到的公钥的buffer值
@@ -484,10 +484,10 @@ rlpEncode(input)
 使用rlp算法进行编码
 
 ##### Parameters
-0. `string|buffer|array|number` - 需要编码的数据
+0. `string|Buffer|Array|number` - 需要编码的数据
 
 ##### Returns
-`buffer` - 编码后的Buffer数据对象
+`Buffer` - 编码后的Buffer数据对象
 
 ---
 
@@ -500,11 +500,11 @@ rlpDecode(input, stream)
 使用rlp算法进行解码
 
 ##### Parameters
-0. `string|buffer|array|number` - 需要解码的数据
-1. `stream` - `input`是否是一个流，这种情况下`input`末尾会存在一些无法解析的数据
+0. `string|Buffer|Array|number` - 需要解码的数据
+1. `bool` - `stream`是否是一个流，这种情况下`input`末尾会存在一些无法解析的数据
 
 ##### Returns
-`array` - 解码出的数据
+`Array` - 解码出的数据
 
 ---
 
