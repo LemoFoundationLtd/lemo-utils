@@ -37,15 +37,18 @@
                             const test = randomBytes(20)
                             const testUtf8 = test.toString()
                             const encoded = LemoUtils.base64Encode(testUtf8, true)
-                            assert.equal(LemoUtils.base64Decode(encoded), testUtf8, `case ${i}, hex of test=${test.toString('hex')}`)
+                            const decoded = LemoUtils.base64Decode(encoded)
+                            assert.equal(decoded, testUtf8, `case ${i}, hex of test=${test.toString('hex')}`)
                         })
                     }
 
                     for (let i = 0; i < 20; i++) {
                         it(`random hex case ${i}`, () => {
-                            const test = randomBytes(20).toString('hex')
-                            const encoded = LemoUtils.base64Encode(test, true, true)
-                            assert.equal(LemoUtils.base64Decode(encoded, true), test, `case ${i}, test=${test}`)
+                            const test = randomBytes(20).toString('hex').replace(/^0+/, '')
+                            const encoded = LemoUtils.base64Encode(test, false, true)
+                            const decoded = LemoUtils.base64Decode(encoded, true)
+                            const expected = `0x${test}`
+                            assert.equal(decoded, expected, `case ${i}, test=${test}`)
                         })
                     }
                 })

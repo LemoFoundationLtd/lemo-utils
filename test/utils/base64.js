@@ -12,6 +12,7 @@ describe('base64_base64Encode_base64Decode', () => {
         {input: '', isHex: true},
         {input: '0x', isHex: true, output: ''},
         {input: '0xa', isHex: true},
+        {input: '0x0a', isHex: true, output: '0xa'},
         {input: '0xab', isHex: true},
         {input: '0xabc', isHex: true},
         {input: '0XABC', isHex: true, output: '0xabc'},
@@ -20,6 +21,7 @@ describe('base64_base64Encode_base64Decode', () => {
         {input: '', isHex: false},
         {input: '0x', isHex: false},
         {input: '0xa', isHex: false},
+        {input: '0x0a', isHex: false},
         {input: '0xab', isHex: false},
         {input: '0xabc', isHex: false},
         {input: '0XABC', isHex: false},
@@ -51,7 +53,7 @@ describe('base64_utf8', () => {
 describe('base64_hex', () => {
     for (let i = 0; i < 20; i++) {
         it(`random hex case ${i}`, () => {
-            const test = randomBytes(20).toString('hex')
+            const test = randomBytes(20).toString('hex').replace(/^0+/, '')
             const encoded = base64Encode(test, false, true)
             const decoded = base64Decode(encoded, true)
             const expected = `0x${test}`
