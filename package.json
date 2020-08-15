@@ -10,7 +10,7 @@
         "@babel/runtime": "7.11.2",
         "base-x": "3.0.8",
         "bignumber.js": "9.0.0",
-        "core-js": "^3.2.1",
+        "core-js": "3.6.5",
         "elliptic": "6.5.3",
         "keccak": "2.0.0",
         "safe-buffer": "5.2.1"
