@@ -214,7 +214,7 @@ generateAccount()
 
 ##### Returns
 `object` - 带有账户和私钥的地址，包括：
-    - `privKey` 私钥
+    - `privateKey` 私钥
     - `address` 以`Lemo`开头的地址
 
 ### amount
