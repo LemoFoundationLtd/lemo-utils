@@ -11,7 +11,7 @@
         "base-x": "3.0.8",
         "bignumber.js": "9.0.0",
         "core-js": "3.6.5",
-        "elliptic": "6.5.3",
+        "elliptic": "6.5.4",
         "keccak": "2.0.0",
         "safe-buffer": "5.2.1"
     },
